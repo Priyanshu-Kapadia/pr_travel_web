@@ -70,29 +70,34 @@ export default function ProductList() {
       },
     },
     { field: "city", headerName: "City", width: 200 },
-    {
-      field: "hotel",
-      headerName: "Hotel",
-      width: 160,
-    },
-    {
-      field: "address",
-      headerName: "Address",
-      width: 120,
-    },
-    {
-      field: "distance",
-      headerName: "Distance",
-      width: 160,
-    },
+    // {
+    //   field: "hotel",
+    //   headerName: "Hotel",
+    //   width: 160,
+    // },
+    // {
+    //   field: "address",
+    //   headerName: "Address",
+    //   width: 120,
+    // },
+    // {
+    //   field: "distance",
+    //   headerName: "Distance",
+    //   width: 160,
+    // },
     {
       field: "maxGroupSize",
       headerName: "Group Size",
       width: 160,
     },
     {
-      field: "price",
-      headerName: "Price",
+      field: "Adult_Price",
+      headerName: "Adult_Price",
+      width: 160,
+    },
+    {
+      field: "Child_Price",
+      headerName: "Child_Price",
       width: 160,
     },
     {

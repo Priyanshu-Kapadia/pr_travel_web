@@ -28,7 +28,8 @@ export default function NewProduct() {
       formData.append("address", inputs.address);
       formData.append("desc", inputs.desc);
       formData.append("hotel", inputs.hotel);
-      formData.append("price", Number(inputs.price));
+      formData.append("Adult_Price", Number(inputs.Adult_Price));
+      formData.append("Child_Price", Number(inputs.Child_Price));
       formData.append("distance", Number(inputs.distance));
       formData.append("maxGroupSize", Number(inputs.maxGroupSize));
       formData.append("featured", inputs.featured === "true" ? true : false);
@@ -109,9 +110,18 @@ export default function NewProduct() {
               />
             </div>
             <div className="addProductItem">
-              <label>Price</label>
+              <label>Adult_Price</label>
               <input
-                name="price"
+                name="Adult_Price"
+                type="number"
+                placeholder="₹"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="addProductItem">
+              <label>Children_Price</label>
+              <input
+                name="Child_Price"
                 type="number"
                 placeholder="₹"
                 onChange={handleChange}

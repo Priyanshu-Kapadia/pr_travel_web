@@ -11,7 +11,18 @@ const tourSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
+    // hotel: {
+    //   type: String,
+    //   required: true,
+    // },
+    images: [
+      {
+        url: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     photo: {
       type: String,
       required: true,
@@ -20,7 +31,11 @@ const tourSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    price: {
+    Adult_Price: {
+      type: Number,
+      required: true,
+    },
+    Child_Price: {
       type: Number,
       required: true,
     },
@@ -28,7 +43,6 @@ const tourSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-
     reviews: [
       {
         type: mongoose.Types.ObjectId,

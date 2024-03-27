@@ -25,7 +25,8 @@ const TourDetails = () => {
     photo,
     title,
     desc,
-    price,
+    Adult_Price,
+    Child_Price,
 
     reviews,
     city,
@@ -115,8 +116,12 @@ const TourDetails = () => {
                         <i class="ri-map-pin-2-line"></i> {city}
                       </span>
                       <span>
-                        <i class="ri-money-dollar-circle-line"></i> ${price}{" "}
-                        /per person
+                        <i class="ri-money-dollar-circle-line"></i> ${Adult_Price}{" "}
+                        /For Adult(12+ years)
+                      </span>
+                      <span>
+                        <i class="ri-money-dollar-circle-line"></i> ${Child_Price}{" "}
+                        /For Childern
                       </span>
 
                       <span>

@@ -14,7 +14,9 @@ export default function WidgetLg({ bookingData }) {
           {/* <th className="widgetLgTh">Email</th> */}
           <th className="widgetLgTh">Tour Name</th>
           <th className="widgetLgTh">Phone</th>
-          <th className="widgetLgTh">Guest Size</th>
+          <th className="widgetLgTh">Adult</th>
+          <th className="widgetLgTh">Children</th>
+
           <th className="widgetLgTh">Booking Date</th>
           <th className="widgetLgTh">Status</th>
         </tr>
@@ -24,7 +26,9 @@ export default function WidgetLg({ bookingData }) {
             {/* <td className="widgetLgName">{item.userEmail}</td> */}
             <td className="widgetLgName">{item.tourName}</td>
             <td className="widgetLgAmount">{item.phone}</td>
-            <td className="widgetLgAmount">{item.guestSize}</td>
+            <td className="widgetLgAmount">{item.Ad_Count}</td>
+            <td className="widgetLgAmount">{item.Ch_Count}</td>
+
             <td className="widgetLgDate">
               {moment(item.bookAt).utc().format("DD-MM-YYYY")}
             </td>

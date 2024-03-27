@@ -16,7 +16,11 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    guestSize: {
+    Ad_Count: {
+      type: Number,
+      required: true,
+    },
+    Ch_Count: {
       type: Number,
       required: true,
     },

@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { BASE_URL } from "../../utils/config";
 
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews, title } = tour;
+  const { Child_Price, Adult_Price, reviews, title } = tour;
   const navigate = useNavigate();
 
   const { user } = useContext(AuthContext);
@@ -18,7 +18,8 @@ const Booking = ({ tour, avgRating }) => {
     tourName: title,
     fullName: "",
     phone: "",
-    guestSize: 1,
+    Ad_Count: 0,
+    Ch_Count: 0,
     bookAt: "",
   });
 
@@ -28,7 +29,7 @@ const Booking = ({ tour, avgRating }) => {
 
   const serviceFee = 10;
   const totalAmount =
-    Number(price) * Number(booking.guestSize) + Number(serviceFee);
+    Number(Adult_Price) * Number(booking.Ad_Count) + Number(serviceFee) + Number(Child_Price) * Number(booking.Ch_Count);
 
   //   send data to the server
   const handleClick = async e => {
@@ -66,7 +67,10 @@ const Booking = ({ tour, avgRating }) => {
     <div className="booking">
       <div className="booking__top d-flex align-items-center justify-content-between">
         <h3>
-          ${price} <span>/per person</span>
+          ${Adult_Price} <span>/For Adult(12+ year)</span>
+        </h3>
+        <h3>
+          ${Child_Price} <span>/For Children</span>
         </h3>
         <span className="tour__rating d-flex align-items-center ">
           <i class="ri-star-s-fill"></i>
@@ -104,10 +108,19 @@ const Booking = ({ tour, avgRating }) => {
               required
               onChange={handleChange}
             />
+          </FormGroup>
+          <FormGroup className="d-flex align-items-center gap-3">
             <input
               type="number"
-              placeholder="Guest"
-              id="guestSize"
+              placeholder="Adult"
+              id="Ad_Count"
+              required
+              onChange={handleChange}
+            />
+            <input
+              type="number"
+              placeholder="Children"
+              id="Ch_Count"
               required
               onChange={handleChange}
             />
@@ -121,9 +134,15 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              ${price} <i class="ri-close-line"></i> 1 person
+              ${Adult_Price} <i class="ri-close-line"></i> {booking.Ad_Count} Adult
             </h5>
-            <span> ${price}</span>
+            <span> ${Adult_Price * booking.Ad_Count}</span>
+          </ListGroupItem>
+          <ListGroupItem className="border-0 px-0">
+            <h5 className="d-flex align-items-center gap-1">
+              ${Child_Price} <i class="ri-close-line"></i> {booking.Ch_Count} Children
+            </h5>
+            <span> ${Child_Price * booking.Ch_Count}</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
             <h5>Service charge</h5>
