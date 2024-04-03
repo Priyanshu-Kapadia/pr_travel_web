@@ -1,5 +1,16 @@
+.product-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .newProduct {
-  flex: 4;
+  /* flex: 4; */
+  margin: 15px;
+  padding: 30px;
+  border-radius: 30px;
+  border: 1px solid black;
+  width: 80%;
 }
 
 .addProductForm {
@@ -19,17 +30,17 @@
   margin-bottom: 10px;
 }
 
-.addProductItem > label {
+.addProductItem>label {
   color: gray;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.addProductItem > input {
+.addProductItem>input {
   padding: 10px;
 }
 
-.addProductItem > select {
+.addProductItem>select {
   padding: 10px;
 }
 

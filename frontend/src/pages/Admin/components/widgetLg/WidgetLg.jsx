@@ -16,8 +16,8 @@ export default function WidgetLg({ bookingData }) {
           <th className="widgetLgTh">Phone</th>
           <th className="widgetLgTh">Adult</th>
           <th className="widgetLgTh">Children</th>
-
           <th className="widgetLgTh">Booking Date</th>
+          <th className="widgetLgTh">Price</th>
           <th className="widgetLgTh">Status</th>
         </tr>
         {bookingData.map((item, index) => (
@@ -31,6 +31,9 @@ export default function WidgetLg({ bookingData }) {
 
             <td className="widgetLgDate">
               {moment(item.bookAt).utc().format("DD-MM-YYYY")}
+            </td>
+            <td className="widgetLgAmount">
+              {item.price ? `$${item.price}` : "$0"}
             </td>
             <td className="widgetLgStatus">
               <Button type="Approved" />

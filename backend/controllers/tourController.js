@@ -3,7 +3,7 @@ import { uploadImageToCloudinary } from "../utils/imageUploader.js";
 
 // create new tour
 export const createTour = async (req, res) => {
-  const thumbnail = req.files.photo;
+  const thumbnail = req?.files?.photo;
   if (thumbnail) {
     const thumbnailImage = await uploadImageToCloudinary(
       thumbnail,
@@ -31,7 +31,14 @@ export const createTour = async (req, res) => {
 // update tour
 export const updateTour = async (req, res) => {
   const id = req.params.id;
-
+  const thumbnail = req?.files?.photo;
+  if (thumbnail) {
+    const thumbnailImage = await uploadImageToCloudinary(
+      thumbnail,
+      process.env.FOLDER_NAME
+    );
+    req.body.photo = thumbnailImage?.secure_url;
+  }
   try {
     const updatedTour = await Tour.findByIdAndUpdate(
       id,

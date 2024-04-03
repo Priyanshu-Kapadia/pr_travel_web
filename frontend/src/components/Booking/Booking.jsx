@@ -17,22 +17,25 @@ const Booking = ({ tour, avgRating }) => {
     userEmail: user && user.email,
     tourName: title,
     fullName: "",
+    price: "",
     phone: "",
     Ad_Count: 0,
     Ch_Count: 0,
     bookAt: "",
   });
 
-  const handleChange = e => {
-    setBooking(prev => ({ ...prev, [e.target.id]: e.target.value }));
+  const handleChange = (e) => {
+    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   const serviceFee = 10;
   const totalAmount =
-    Number(Adult_Price) * Number(booking.Ad_Count) + Number(serviceFee) + Number(Child_Price) * Number(booking.Ch_Count);
+    Number(Adult_Price) * Number(booking.Ad_Count) +
+    Number(serviceFee) +
+    Number(Child_Price) * Number(booking.Ch_Count);
 
   //   send data to the server
-  const handleClick = async e => {
+  const handleClick = async (e) => {
     e.preventDefault();
 
     try {
@@ -41,7 +44,7 @@ const Booking = ({ tour, avgRating }) => {
       }
 
       const token = localStorage.getItem("token");
-
+      booking.price = totalAmount;
       const res = await fetch(`${BASE_URL}/booking`, {
         method: "post",
         headers: {
@@ -134,13 +137,15 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              ${Adult_Price} <i class="ri-close-line"></i> {booking.Ad_Count} Adult
+              ${Adult_Price} <i class="ri-close-line"></i> {booking.Ad_Count}{" "}
+              Adult
             </h5>
             <span> ${Adult_Price * booking.Ad_Count}</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              ${Child_Price} <i class="ri-close-line"></i> {booking.Ch_Count} Children
+              ${Child_Price} <i class="ri-close-line"></i> {booking.Ch_Count}{" "}
+              Children
             </h5>
             <span> ${Child_Price * booking.Ch_Count}</span>
           </ListGroupItem>

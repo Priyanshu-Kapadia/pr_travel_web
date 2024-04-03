@@ -11,6 +11,7 @@ export default function AdminHome() {
   const token = localStorage.getItem("token");
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [chartData, setChartData] = useState([]);
   const [bookingData, setBookingData] = useState([]);
 
   const fetchUser = useCallback(async () => {
@@ -51,6 +52,17 @@ export default function AdminHome() {
       if (res.status === 200) {
         console.log("successfull");
         setBookingData(result.data);
+        let ChartData = [];
+        for (let i = 0; i < result.data.length; i++) {
+          console.log(result.data[i]);
+          let item = {
+            name: result.data[i].fullName,
+            price: result.data[i].price ? result.data[i].price : 0,
+          };
+          ChartData.push(item);
+        }
+        console.log(ChartData);
+        setChartData(ChartData);
       }
       setLoading(false);
     } catch (err) {
@@ -63,12 +75,12 @@ export default function AdminHome() {
   return (
     <div className="admin-container">
       <div className="home">
-        <FeaturedInfo />
+        {/* <FeaturedInfo /> */}
         <Chart
-          data={userData}
-          title="User Analytics"
+          data={chartData}
+          title="Booking Analytics"
           grid
-          dataKey="Active User"
+          dataKey="price"
         />
         <div className="homeWidgets">
           <WidgetSm data={data} />

@@ -1,11 +1,12 @@
 import "./productList.css";
-import { DeleteOutline } from "@material-ui/icons";
+import { DeleteOutline, Edit } from "@material-ui/icons";
 // import { productRows } from "../../dummyData";
 // import { Link } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { BASE_URL } from "../../../../utils/config";
 import { Spinner } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default function ProductList() {
   const token = localStorage.getItem("token");
@@ -107,9 +108,12 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            {/* <Link to={"/product/" + params.row.id}>
-              <button className="productListEdit">Edit</button>
-            </Link> */}
+            <Link to={"/admin/product/" + params.row._id}>
+              {/* <div>
+                <button className="productListEdit"></button>
+              </div> */}
+              <Edit />
+            </Link>
             <DeleteOutline
               className="productListDelete"
               onClick={() => handleDelete(params.row._id)}
